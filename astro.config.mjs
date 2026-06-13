@@ -7,6 +7,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://apx-linux.github.io',
-	base: '/apx-homepage',
+	base: '/',
 	integrations: [mdx(), sitemap()],
 });
