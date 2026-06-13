@@ -1,3 +1,7 @@
+---
+import { Image } from 'astro:assets';
+import retroMonitor from '../assets/retro-monitor.png'; // Place your image here
+---
 <section class="hero neon-box">
 
   <div>
@@ -26,5 +30,5 @@
 
   </div>
 
-  <img src="/assets/retro-monitor.png" />
+  <Image src={retroMonitor} alt="APX System" />
 </section>
