@@ -6,6 +6,8 @@ import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
 import TerminalWidget from '../components/TerminalWidget.astro';
 import FooterBar from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import desktop1 from '../assets/desktop1.jpeg';
 ---
 
 <Layout>
@@ -23,7 +25,7 @@ import FooterBar from '../components/Footer.astro';
       <section class="showcase dashboard-preview">
         <TerminalWidget />
         <div class="screenshots">
-     		<img src="/assets/desktop1.jpeg" alt="APX Desktop Preview" />
+        <Image src={desktop1} alt="APX Desktop Preview" />
   		</div>
       </section>
 
