@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layouts.astro';
+
+import Sidebar from '../components/Sidebar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import TerminalWidget from '../components/TerminalWidget.astro';
+import FooterBar from '../components/Footer.astro';
+---
+
+<Layout>
+
+  <div class="app">
+
+    <Sidebar />
+
+    <main>
+
+      <Hero />
+
+      <Features />
+
+      <section class="showcase dashboard-preview">
+        <TerminalWidget />
+        <div class="screenshots">
+     		<img src="src/components/desktop1.jpeg" alt="APX Desktop Preview" />
+  		</div>
+      </section>
+
+      <FooterBar />
+
+    </main>
+
+  </div>
+
+</Layout>
+
+<style>
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1rem;
+
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

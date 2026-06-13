@@ -1,0 +1,175 @@
+---
+/* TerminalWidget.astro - Custom Typing Simulation */
+---
+
+<div class="terminal-container">
+  <div class="terminal-bar">
+    <div class="terminal-buttons">
+      <span class="dot close"></span>
+      <span class="dot minimize"></span>
+      <span class="dot expand"></span>
+    </div>
+    <span class="terminal-title">APX Linux Terminal</span>
+  </div>
+
+  <div class="terminal">
+    <div class="command-line">
+      <span class="prompt">r0ttenbeef@apx-linux:~$</span>
+      <span class="typing-text">neofetch</span>
+    </div>
+    
+    <div class="sys-info">
+      <pre class="ascii-logo">
+▄▄▄       ██▓███  ▒██   ██▒ ██▓     ██▓ ███▄    █  █    ██ ▒██   ██▒
+▒████▄    ▓██░  ██▒▒▒ █ █ ▒░▓██▒    ▓██▒ ██ ▀█   █  ██  ▓██▒▒▒ █ █ ▒░
+▒██  ▀█▄  ▓██░ ██▓▒░░  █   ░▒██░    ▒██▒▓██  ▀█ ██▒▓██  ▒██░░░  █   ░
+░██▄▄▄▄██ ▒██▄█▓▒ ▒ ░ █ █ ▒ ▒██░    ░██░▓██▒  ▐▌██▒▓▓█  ░██░ ░ █ █ ▒ 
+ ▓█   ▓██▒▒██▒ ░  ░▒██▒ ▒██▒░██████▒░██░▒██░   ▓██░▒▒█████▓ ▒██▒ ▒██▒
+ ▒▒   ▓▒█░▒▓▒░ ░  ░▒▒ ░ ░▓ ░░ ▒░▓  ░░▓  ░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ▒▒ ░ ░▓ ░
+  ▒   ▒▒ ░░▒ ░     ░░   ░▒ ░░ ░ ▒  ░ ▒ ░░ ░░   ░ ▒░░░▒░ ░ ░ ░░   ░▒ ░
+  ░   ▒   ░░        ░    ░    ░ ░    ▒ ░   ░   ░ ░  ░░░ ░ ░  ░    ░  
+      ░  ░          ░    ░      ░  ░ ░           ░    ░      ░    ░  
+                                                                     
+      </pre>
+      <span class="info-line">OS: APX Linux</span>
+      <span class="info-line">Based on: Arch Linux</span>
+      <span class="info-line">WM: XFCE</span>
+      <span class="info-line">Repository: Black Arch</span>
+      <span class="info-line">AUR Package: yay</span>
+      <span class="info-line">Used Technologies: Packer, Ansible</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Base Outer Window Frame Styling */
+  .terminal-container {
+  /* Increased from 500px to 800px to make the terminal layout significantly wider */
+  width: 100%;
+  max-width: 700px; 
+  
+  margin: 10px;
+  background: #05020a;
+  border: 1px solid rgba(149, 111, 255, 0.3);
+  box-shadow: 0 0 15px rgba(149, 111, 255, 0.15);
+  overflow: hidden;
+}
+
+  /* Top Border Control Header Bar */
+  .terminal-bar {
+    background: rgba(15, 10, 25, 0.9);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(149, 111, 255, 0.2);
+    position: relative;
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dot.close { background: #ff5555; opacity: 0.7; }
+
+  .terminal-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Main Code Output Box */
+.terminal {
+  padding: 24px;
+  font-family: "VT323", "JetBrains Mono", monospace;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #ffffff;
+  background: transparent;
+  
+  /* CRITICAL: Enforces a solid, immovable structural canvas width */
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+  .command-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  
+  /* CRITICAL: Keeps the line container completely static while text expands */
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+  .prompt {
+    color: #956fff; /* Distinct command-line prompt color */
+  }
+
+  /* Typewriter Step Mechanics */
+  .typing-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #956fff; /* Cursor */
+  width: 0;
+  
+  /* Kept your typing animations intact */
+  animation: 
+    type 1.2s steps(8) 0.5s forwards, 
+    blink 0.75s step-end infinite;
+}
+
+  /* System Stats Appear Right after typing completes */
+  .sys-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: rgba(255, 255, 255, 0.85);
+    
+    /* Animation delays visibility until typing finishes */
+    opacity: 0;
+    animation: revealInfo 0.3s ease-out 1.8s forwards;
+  }
+
+  .info-line {
+    text-shadow: 0 0 5px rgba(149, 111, 255, 0.2);
+  }
+
+  /* Keyframe Calculations */
+  @keyframes type {
+    from { width: 0; }
+    /* Exact layout bounds length to perfectly expose 'neofetch' */
+    to { width: 90px; } 
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #956fff; }
+  }
+
+  @keyframes revealInfo {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

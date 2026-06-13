@@ -1,0 +1,511 @@
+:root{
+  --bg:#05010a;
+  --panel:#0c0615;
+
+  --purple:#8122c5;
+  --purple-light:#b052db;
+  --border:#5f1ea6;
+
+  --text:#d7c2ff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#05010a;
+  color:var(--text);
+
+  font-family:"jetbrains mono", monospace;
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at center,
+    rgba(41, 8, 66, 0.15),
+    transparent 60%
+  );
+
+  pointer-events:none;
+}
+
+.description{
+  margin-top:20px;
+  max-width:600px;
+  font-family:"VT323";
+  font-size:1.40rem;
+  color: #b6b6b6;
+}
+
+.credits{
+  margin-top:20px;
+  max-width:600px;
+  font-family:"VT323";
+  font-size:1rem;
+  color: #b6b6b6;
+}
+
+.crt{
+  position:fixed;
+  inset:0;
+
+  background:
+  repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+
+  pointer-events:none;
+}
+
+.app{
+  display:grid;
+  grid-template-columns:260px 1fr;
+
+  gap:1rem;
+
+  padding:20px;
+}
+
+.sidebar{
+  padding:20px;
+  min-height:calc(100vh - 40px);
+}
+
+.logo{
+  font-size:4.63rem;
+  font-family:"Press Start 2P";
+  color:rgb(220, 131, 255);
+  font-weight: bold;
+  image-rendering: pixelated;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  -webkit-text-stroke: 1px rgb(213, 107, 255);
+  text-shadow:
+    0 0 8px rgba(79, 1, 224, 0.8),
+    0 0 10px var(--purple),
+    0 0 20px var(--purple);
+}
+
+.subtitle{
+  margin-top:10px;
+  color:#a78ed5;
+  font-family:"VT323";
+  font-size:20px;
+}
+
+.version{
+  margin-top:8px;
+  color:#553c85;
+  font-family:"VT323";
+  font-size:25px;
+}
+
+.ascii-logo {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 0.83rem; /* Shrunk down slightly so it fits inside the container block without clipping */
+  line-height: 1.2;
+  color: #956fff;     /* Matches your theme purple */
+  margin: 0 0 15px 0;
+  white-space: pre;   /* Double protection forcing the browser to maintain spacing */
+  overflow-x: auto;   /* If the screen gets super narrow, it adds an internal scroll instead of breaking the logo */
+}
+
+nav{
+  margin-top:30px;
+
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+nav a{
+  color:var(--text);
+  text-decoration:none;
+}
+
+main{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.neon-box{
+  border:1px solid #11081a;
+
+  box-shadow:
+  0 0 10px rgba(17, 4, 66, 0.178),
+  inset 0 0 10px rgba(177,68,255,.1);
+
+  background:rgb(10, 4, 18);
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1fr 400px;
+
+  gap:20px;
+
+  padding:40px;
+
+  overflow: hidden;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  
+  /* Kept your core values intact */
+  gap: 20px; 
+  padding: 40px;
+  
+  /* Fix: Prevents the container from clipping the image or forcing scrollbars */
+  overflow: hidden; 
+}
+
+.hero img {
+  width: 140%;
+  height: 140%;
+  
+  /* 'cover' forces the graphic asset to fill its entire grid slot right up to the border */
+  object-fit: cover; 
+
+  /* Pulls the image flush right, swallowing the 40px container padding on that side */
+  margin-right: -40px; 
+  margin-top: -40px;
+  margin-bottom: -40px;
+  margin-left: -100px;
+
+  /* Kept your left-side blend intact */
+  -webkit-mask-image: linear-gradient(
+    to right, 
+    rgba(0,0,0,0) 0%, 
+    rgba(0,0,0,0.3) 15%,  /* Soft transition zone */
+    rgba(0,0,0,1) 40%     /* Becomes fully solid later, expanding the visible left area */
+  );
+  mask-image: linear-gradient(
+    to right, 
+    rgba(0,0,0,0) 0%, 
+    rgba(0,0,0,0.3) 15%,
+    rgba(0,0,0,1) 40%
+  );
+}
+
+.hero h1{
+  font-family:"Press Start 2P";
+  font-size:8rem;
+
+  text-shadow:
+  0 0 15px rgb(85, 25, 223),
+  0 0 40px rgb(83, 9, 83);
+}
+
+.hero h2{
+  font-family:"Press Start 2P";
+  font-size:2rem;
+}
+
+.hero p{
+  margin-top:20px;
+  max-width:600px;
+  font-family:"VT323";
+  font-size:1.50rem;
+  color: #553c85;
+}
+
+.hero-buttons{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+}
+
+button{
+  border:none;
+  cursor:pointer;
+
+  padding:14px 28px;
+
+  background:var(--purple);
+  color:white;
+}
+
+.outline{
+  background:transparent;
+  border:1px solid var(--border);
+}
+
+.monitor{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.screen{
+  width:280px;
+  height:220px;
+
+  border:4px solid var(--border);
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  font-family:"Press Start 2P";
+  font-size:4rem;
+
+  text-shadow:0 0 10px var(--purple);
+}
+
+.screen span{
+  font-size:1.2rem;
+}
+
+.section-title{
+  font-family:"Press Start 2P";
+  font-size:1.5rem;
+
+  margin-bottom:15px;
+}
+
+.features{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(180px,1fr));
+
+  gap:15px;
+}
+
+.feature-card {
+  padding: 20px;
+  font-family: "VT323", monospace;
+  font-size: 1.5rem;
+  
+  /* Layout: Converts the card into a flex column to center everything perfectly */
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centers elements horizontally */
+  justify-content: center; /* Centers elements vertically if card has fixed height */
+  text-align: center;     /* Aligns text multi-lines to the middle */
+}
+
+.feature-card h3 {
+  color: #956fff;         /* Your signature vivid neon purple */
+  margin-top: 0;
+  margin-bottom: 8px;     /* Keeps a tight, clean gap above the description */
+  font-size: 1.8rem;      /* Slightly larger for clear structure hierarchy */
+}
+
+/* Specific styling for the Description Paragraph inside the feature card */
+.feature-card p {
+  color: rgba(255, 255, 255, 0.7); /* Muted off-white for excellent body text readability */
+  margin: 0;
+  font-size: 1.3rem;      /* Slightly balanced size for subtext styling */
+}
+
+.showcase{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+
+.dashboard-preview {
+  display: flex;
+  flex-direction: row;      /* Locks them side-by-side */
+  align-items: center;      /* Keeps both items vertically centered */
+  
+  /* CRITICAL: Pushes elements out to touch opposite horizontal edges */
+  justify-content: space-between; 
+  
+  gap: 40px;                /* Safety gap so the screenshot doesn't crash into your terminal text */
+  width: 100%;
+  max-width: 100%;          /* Uses full screen width instead of being restricted */
+  padding: 0 40px;          /* Clean side margins to match your overall landing layout padding */
+  margin: 40px auto;
+}
+
+/* TERMINAL COLUMN: Solid, Unyielding Width */
+.dashboard-preview > :global(.terminal-container) {
+  flex: 0 0 550px;          /* Do not grow, do not shrink, fix permanently at 550px width */
+  max-width: 550px;
+}
+
+/* SCREENSHOT COLUMN: Takes all remaining space */
+.screenshots {
+  /* CRITICAL: 1 allows it to dynamically stretch and dominate the rest of the layout row */
+  flex: 1;                  
+  display: flex;
+  justify-content: flex-end; /* Keeps the internal image aligned perfectly to the very right edge */
+}
+
+.screenshots img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;        /* Prevents massive high-res vertical images from blowing out your page fold */
+  object-fit: cover;        /* Ensures content looks crisp and cropped beautifully if scaling hard */
+  
+  border: 1px solid rgba(149, 111, 255, 0.3);
+  box-shadow: 0 0 15px rgba(149, 111, 255, 0.15);
+}
+
+/* Responsive breakpoint handling */
+@media (max-width: 1024px) {
+  .dashboard-preview {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .dashboard-preview > :global(.terminal-container),
+  .screenshots {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+
+  padding:15px;
+  font-family:"VT323";
+  font-size:1.2rem;
+}
+
+/* Container to space the buttons out neatly */
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  padding: 16px 28px;
+  cursor: pointer;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Adds perfect, even horizontal spacing between the icon and text */
+  gap: 7px; 
+  
+  transition: all 0.15s ease-in-out;
+}
+
+/* PRIMARY BUTTON: Solid Neon Purple Block */
+.btn-primary {
+  background: var(--purple);
+  color: #ffffff;
+  border: 1px solid var(--purple-light);
+  
+  /* Hard neon drop-shadow box */
+  box-shadow: 0 0 10px rgba(177, 68, 255, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--purple-light);
+  color: #000000; /* Text flips to black on hover for high contrast arcade vibe */
+  box-shadow: 0 0 20px var(--purple-light);
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* SECONDARY BUTTON: Transparent Box with Glowing Borders */
+.btn-secondary {
+  background: rgba(12, 6, 21, 0.5); /* Semi-transparent panel color */
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 8px rgba(177, 68, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(177, 68, 255, 0.1);
+  color: #ffffff;
+  border-color: var(--purple);
+  box-shadow: 
+    0 0 15px rgba(177, 68, 255, 0.3),
+    inset 0 0 10px rgba(177, 68, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Active pressing state for both buttons */
+.btn-primary:active, .btn-secondary:active {
+  transform: translateY(1px); /* Pushes down when clicked */
+}
+
+/* Container layout to line them up neatly */
+.icon-panel {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+/* Custom styling for Font Awesome Icons */
+.retro-icon {
+  font-size: 24px; /* Using exact pixel sizes keeps pixel art perfectly crisp */
+  color: var(--purple-light);
+
+  /* Keeps the grid lines of the pixel font perfectly sharp when scaled up */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  filter: 
+    drop-shadow(0 0 4px var(--purple)) 
+    drop-shadow(0 0 10px rgba(177, 68, 255, 0.4));
+}
+
+/* Hover effect for interactive navigation links or dashboard stats */
+.retro-icon:hover {
+  color: #ffffff;
+  cursor: pointer;
+  
+  /* Elevates the glow brilliance on mouse over */
+  filter: 
+    drop-shadow(0 0 6px var(--purple-light)) 
+    drop-shadow(0 0 15px var(--purple));
+    
+  transform: scale(1.05);
+}
+
+@media(max-width:1000px){
+
+  .app{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .showcase{
+    grid-template-columns:1fr;
+  }
+
+}
